@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail - Hutan Pinus Limpakuwus</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #D9D2CE;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <nav class="bg-[#4A3429] text-white px-12 py-4 flex justify-between items-center shadow-md">
+        <div class="text-2xl font-bold tracking-wide">ChillZone</div>
+        <div class="flex items-center gap-8 font-medium">
+            <a href="#" class="hover:text-amber-200 transition">Home</a>
+            <a href="#" class="hover:text-amber-200 transition">Spots</a>
+            <a href="#" class="hover:text-amber-200 transition">Review</a>
+            <a href="#" class="hover:text-amber-200 transition">Article</a>
+            <a href="#" class="text-2xl ml-4 hover:text-amber-200"><i class="fa-solid fa-circle-user"></i></a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="bg-[#D1C7BD] border border-gray-400 w-full max-w-6xl rounded-sm shadow-sm flex flex-col md:flex-row min-h-[550px]">
+            
+            <div class="w-full md:w-1/2 p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex border border-gray-400 rounded-sm overflow-hidden mb-6 w-max bg-[#E2DACF]">
+                        <button onclick="switchTab('about')" id="btn-about" class="px-6 py-2 text-sm font-semibold border-r border-gray-400 transition-all cursor-pointer">About</button>
+                        <button onclick="switchTab('menu')" id="btn-menu" class="px-6 py-2 text-sm font-semibold border-r border-gray-400 transition-all cursor-pointer">Menu</button>
+                        <button onclick="switchTab('vibes')" id="btn-vibes" class="px-6 py-2 text-sm font-semibold border-r border-gray-400 transition-all cursor-pointer">The Vibes</button>
+                        <button onclick="switchTab('contact')" id="btn-contact" class="px-6 py-2 text-sm font-semibold transition-all cursor-pointer">Contact</button>
+                    </div>
+
+                    <div id="tab-content" class="text-[#33221A] space-y-4">
+                        </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 flex items-stretch">
+                <div id="image-container" class="w-full min-h-[350px] md:min-h-full bg-cover bg-center transition-all duration-300">
+                    </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center text-xs text-[#55443C] py-6 space-y-1 bg-[#D9D2CE]">
+        <p>© 2026 ChillZone. All rights reserved.</p>
+        <p class="font-medium">Create your vibe • Zone your moment • Own your experience</p>
+    </footer>
+
+    <script>
+        // Data teks dan gambar yang disesuaikan persis seperti kiriman file foto kamu
+        const destinasiData = {
+            about: {
+                judul: "Hutan Pinus Limpakuwus",
+                deskripsi: "Destinasi wisata alam berupa hutan pinus yang asri di kawasan Baturaden, menawarkan suasana sejuk, tenang, dan alami. Tempat ini cocok untuk refreshing, healing, hingga aktivitas outdoor seperti piknik dan foto-foto dengan latar pepohonan pinus yang estetik.",
+                location: "Area Sawah, Limpakuwus, Sumbang, Banyumas Regency, Central Java 53151",
+                openingHours: "Everyday - 7.30am-4.00pm",
+                priceRange: "Rp.17.500",
+                gambar: "img/About (4).png" // Menggunakan file About (4).png dari foldermu
+            },
+            menu: {
+                judul: "MENU HUTAN PINUS LIMPAKUWUS",
+                deskripsi: "Di area wisata tersedia berbagai pilihan makanan dan minuman sederhana yang dijual di warung sekitar. Pengunjung dapat menikmati camilan ringan, makanan instan, serta minuman hangat seperti kopi dan teh yang cocok dinikmati di udara dingin khas pegunungan. Harga yang ditawarkan juga relatif terjangkau.",
+                bestSeller: "Menu yang paling sering dipilih pengunjung biasanya adalah minuman hangat seperti kopi dan teh, serta camilan ringan seperti gorengan dan mie instan. Selain praktis, menu ini cocok dinikmati sambil bersantai di tengah suasana hutan pinus yang sejuk.",
+                gambar: "img/Menu.png" // Menggunakan file Menu.png dari foldermu
+            },
+            vibes: {
+                judul: "THE VIBES HUTAN PINUS LIMPAKUWUS",
+                poin: [
+                    "Hutan pinus yang rindang dan sejuk",
+                    "Suasana tenang, jauh dari keramaian kota",
+                    "Banyak spot foto aesthetic di tengah hutan",
+                    "Area piknik dan tempat duduk santai",
+                    "Cocok untuk healing, santai, dan quality time",
+                    "Area parkir tersedia",
+                    "Mushola",
+                    "Toilet umum",
+                    "Area bermain & camping (di beberapa titik)"
+                ],
+                payment: "Tunai",
+                gambar: "img/The Vibes (4).png" // Menggunakan file The Vibes (4).png dari foldermu
+            },
+            contact: {
+                judul: "CONTACT HUTAN PINUS LIMPAKUWUS",
+                phone: "+62 821-2222-7957",
+                instagram: "@hutanpinuslimpakuwuss",
+                locationName: "Baturraden",
+                gambar: "img/Contact (4).png" // Menggunakan file Contact (4).png dari foldermu
+            }
+        };
+
+        function switchTab(tabName) {
+            const contentDiv = document.getElementById('tab-content');
+            const imgContainer = document.getElementById('image-container');
+            
+            // 1. Reset warna background & teks semua tombol tab
+            ['about', 'menu', 'vibes', 'contact'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (btn) {
+                    btn.style.backgroundColor = 'transparent';
+                    btn.style.color = '#33221A';
+                }
+            });
+            
+            // 2. Warnai tombol yang sedang aktif dengan warna kuning pastel (#FFD666)
+            const activeBtn = document.getElementById(`btn-${tabName}`);
+            if (activeBtn) {
+                activeBtn.style.backgroundColor = '#FFD666';
+            }
+
+            // 3. Kosongkan isi konten teks lama
+            contentDiv.innerHTML = '';
+
+            // 4. Masukkan struktur konten teks baru dan ubah gambar background di sebelah kanan
+            if (tabName === 'about') {
+                const data = destinasiData.about;
+                imgContainer.style.backgroundImage = `url('${data.gambar}')`;
+                contentDiv.innerHTML = `
+                    <h2 class="text-xl font-bold mb-2 tracking-tight">${data.judul}</h2>
+                    <hr class="border-gray-400 my-2">
+                    <p class="text-sm leading-relaxed text-justify mb-4">${data.deskripsi}</p>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Location</h3>
+                    <p class="text-xs text-gray-700">${data.location}</p>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Opening Hours</h3>
+                    <p class="text-xs text-gray-700">${data.openingHours}</p>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Price Range</h3>
+                    <p class="text-sm font-semibold">${data.priceRange}</p>
+                `;
+            } 
+            else if (tabName === 'menu') {
+                const data = destinasiData.menu;
+                imgContainer.style.backgroundImage = `url('${data.gambar}')`;
+                contentDiv.innerHTML = `
+                    <h2 class="text-xl font-bold mb-2 tracking-tight">${data.judul}</h2>
+                    <hr class="border-gray-400 my-2">
+                    <p class="text-sm leading-relaxed text-justify mb-4">${data.deskripsi}</p>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Best Seller</h3>
+                    <p class="text-sm leading-relaxed text-justify">${data.bestSeller}</p>
+                `;
+            } 
+            else if (tabName === 'vibes') {
+                const data = destinasiData.vibes;
+                imgContainer.style.backgroundImage = `url('${data.gambar}')`;
+                
+                let listItems = '';
+                data.poin.forEach(p => {
+                    listItems += `<li class="text-xs">• ${p}</li>`;
+                });
+
+                contentDiv.innerHTML = `
+                    <h2 class="text-xl font-bold mb-2 tracking-tight">${data.judul}</h2>
+                    <hr class="border-gray-400 my-2">
+                    <ul class="space-y-1 mb-4 list-none pl-0">${listItems}</ul>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Payment</h3>
+                    <p class="text-sm">${data.payment}</p>
+                `;
+            } 
+            else if (tabName === 'contact') {
+                const data = destinasiData.contact;
+                imgContainer.style.backgroundImage = `url('${data.gambar}')`;
+                contentDiv.innerHTML = `
+                    <h2 class="text-xl font-bold mb-4 tracking-tight">${data.judul}</h2>
+                    <hr class="border-gray-400 mb-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-full bg-[#4A3429] text-white flex items-center justify-center text-lg"><i class="fa-solid fa-phone"></i></span>
+                            <span class="text-sm font-medium">${data.phone}</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-full bg-[#4A3429] text-white flex items-center justify-center text-lg"><i class="fa-brands fa-instagram"></i></span>
+                            <span class="text-sm font-medium">${data.instagram}</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-full bg-[#4A3429] text-white flex items-center justify-center text-lg"><i class="fa-solid fa-location-dot"></i></span>
+                            <span class="text-sm font-medium">${data.locationName}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Jalankan tab 'about' secara default saat pertama kali file dibuka di browser
+        window.onload = function() {
+            switchTab('about');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChillZone - Germanggis Cilongok</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #D9D2CE;
+        }
+        button {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <nav class="bg-[#4A3429] text-white px-12 py-4 flex justify-between items-center shadow-md">
+        <div class="text-2xl font-bold tracking-wide">ChillZone</div>
+        <div class="flex items-center gap-8 font-medium">
+            <a href="#" class="hover:text-amber-200 transition">Home</a>
+            <a href="#" class="hover:text-amber-200 transition">Spots</a>
+            <a href="#" class="hover:text-amber-200 transition">Review</a>
+            <a href="#" class="hover:text-amber-200 transition">Article</a>
+            <a href="#" class="text-2xl ml-4 hover:text-amber-200"><i class="fa-solid fa-circle-user"></i></a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="bg-[#D1C7BD] border border-gray-400 w-full max-w-6xl rounded-sm shadow-sm flex flex-col md:flex-row min-h-[550px]">
+            
+            <div class="w-full md:w-1/2 p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex border border-gray-400 rounded-sm overflow-hidden mb-6 w-max bg-[#E2DACF]">
+                        <button onclick="switchTab('about')" id="btn-about" class="px-6 py-2 text-sm font-semibold border-r border-gray-400 transition-all cursor-pointer">About</button>
+                        <button onclick="switchTab('menu')" id="btn-menu" class="px-6 py-2 text-sm font-semibold border-r border-gray-400 transition-all cursor-pointer">Menu</button>
+                        <button onclick="switchTab('vibes')" id="btn-vibes" class="px-6 py-2 text-sm font-semibold border-r border-gray-400 transition-all cursor-pointer">The Vibes</button>
+                        <button onclick="switchTab('contact')" id="btn-contact" class="px-6 py-2 text-sm font-semibold transition-all cursor-pointer">Contact</button>
+                    </div>
+
+                    <div id="tab-content" class="text-[#33221A] space-y-4">
+                        </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 flex items-stretch overflow-hidden bg-[#B5ABA2]">
+                <img id="main-image" src="" alt="Germanggis Landscape" class="w-full h-full object-cover transition-all duration-300 min-h-[480px]">
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center text-xs text-[#55443C] py-6 space-y-1 bg-[#D9D2CE]">
+        <p>© 2026 ChillZone. All rights reserved.</p>
+        <p class="font-medium">Create your vibe • Zone your moment • Own your experience</p>
+    </footer>
+
+    <script>
+        // Data konten teks & jalur file gambar (SUDAH DISESUAIKAN DENGAN VS CODE KAMU)
+        const destinasiData = {
+            about: {
+                judul: "Agro Wisata Germanggis",
+                deskripsi: "Germanggis merupakan destinasi wisata alam di perbukitan Cilongok yang menggabungkan konsep agro wisata, area camping, dan homestay. Tempat ini menawarkan keindahan pemandangan alam dari ketinggian, suasana yang sejuk, serta pengalaman berkemah yang tenang dan asri di lereng Gunung Slamet.",
+                location: "Jl. Curug Cipendok No.5, Dusun Manggala, Karangtengah, Cilongok, Kabupaten Banyumas, Jawa Tengah 53162",
+                openingHours: "Everyday - 8.00am - 5.00pm (Area Camping Ground buka 24 Jam)",
+                priceRange: "Rp. 10.000 - Rp. 15.000",
+                gambar: "img/About (5).png" // Sesuai nama file di VS Code kamu
+            },
+            menu: {
+                judul: "MENU GERMANGGIS CILONGOK",
+                deskripsi: "Di area Germanggis tersedia kantin atau warung yang menyediakan makanan dan minuman sederhana untuk pengunjung maupun tamu yang menginap. Menu yang ditawarkan umumnya berupa masakan rumahan, camilan, serta minuman hangat yang segar dan sangat cocok dinikmati di suasana pegunungan.",
+                bestSeller: "Menu yang paling sering dipilih pengunjung adalah makanan sederhana seperti nasi rames dengan lauk rumahan serta minuman hangat seperti kopi dan teh. Camilan ringan juga menjadi favorit untuk menemani waktu santai di area saung atau camping.",
+                gambar: "img/Menu (2).png" // Sesuai nama file di VS Code kamu
+            },
+            vibes: {
+                judul: "THE VIBES GERMANGGIS CILONGOK",
+                poin: [
+                    "Suasana perbukitan lereng Gunung Slamet yang sejuk",
+                    "Pemandangan alam yang indah dan city light di malam hari",
+                    "Spot foto ikonik seperti patung manggis raksasa dan dek pandang",
+                    "Area camping ground yang luas dan nyaman",
+                    "Fasilitas mini waterboom dan playground anak",
+                    "Tersedia gazebo / saung untuk bersantai",
+                    "Fasilitas ibadah (Mushola) dan toilet yang bersih",
+                    "Kantin yang siap melayani kebutuhan pengunjung"
+                ],
+                payment: "Tunai / QRIS",
+                gambar: "img/The Vibes (5).png" // Sesuai nama file di VS Code kamu
+            },
+            contact: {
+                judul: "CONTACT GERMANGGIS CILONGOK",
+                phone: "+62 881-673-5135",
+                instagram: "@germanggis_area",
+                locationName: "Cilongok, Banyumas",
+                gambar: "img/Contact (5).png" // Sesuai nama file di VS Code kamu
+            }
+        };
+
+        // Fungsi kontrol tombol tab aktif & render data html
+        function switchTab(tabName) {
+            const contentDiv = document.getElementById('tab-content');
+            const imgElement = document.getElementById('main-image');
+            
+            // Bersihkan class aktif lama dari semua tombol
+            ['about', 'menu', 'vibes', 'contact'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (btn) {
+                    btn.classList.remove('bg-active-tab');
+                }
+            });
+            
+            // Pasang class aktif dari style.css ke tombol yang baru di-klik
+            const activeBtn = document.getElementById(`btn-${tabName}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-active-tab');
+            }
+
+            contentDiv.innerHTML = '';
+
+            if (imgElement) {
+                imgElement.src = destinasiData[tabName].gambar;
+            }
+
+            if (tabName === 'about') {
+                const data = destinasiData.about;
+                contentDiv.innerHTML = `
+                    <h2 class="text-xl font-bold mb-2 tracking-tight">${data.judul}</h2>
+                    <hr class="border-gray-400 my-2">
+                    <p class="text-sm leading-relaxed text-justify mb-4">${data.deskripsi}</p>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Location</h3>
+                    <p class="text-xs text-gray-700">${data.location}</p>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Opening Hours</h3>
+                    <p class="text-xs text-gray-700">${data.openingHours}</p>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Price Range</h3>
+                    <p class="text-sm font-semibold">${data.priceRange}</p>
+                `;
+            } 
+            else if (tabName === 'menu') {
+                const data = destinasiData.menu;
+                contentDiv.innerHTML = `
+                    <h2 class="text-xl font-bold mb-2 tracking-tight">${data.judul}</h2>
+                    <hr class="border-gray-400 my-2">
+                    <p class="text-sm leading-relaxed text-justify mb-4">${data.deskripsi}</p>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Best Seller</h3>
+                    <p class="text-sm leading-relaxed text-justify">${data.bestSeller}</p>
+                `;
+            } 
+            else if (tabName === 'vibes') {
+                const data = destinasiData.vibes;
+                let listItems = '';
+                data.poin.forEach(p => {
+                    listItems += `<li class="text-xs">• ${p}</li>`;
+                });
+
+                contentDiv.innerHTML = `
+                    <h2 class="text-xl font-bold mb-2 tracking-tight">${data.judul}</h2>
+                    <hr class="border-gray-400 my-2">
+                    <ul class="space-y-1 mb-4 list-none pl-0">${listItems}</ul>
+                    <hr class="border-gray-400 my-2">
+                    <h3 class="font-bold text-sm">Payment</h3>
+                    <p class="text-sm">${data.payment}</p>
+                `;
+            } 
+            else if (tabName === 'contact') {
+                const data = destinasiData.contact;
+                contentDiv.innerHTML = `
+                    <h2 class="text-xl font-bold mb-4 tracking-tight">${data.judul}</h2>
+                    <hr class="border-gray-400 mb-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-full bg-[#4A3429] text-white flex items-center justify-center text-lg"><i class="fa-solid fa-phone"></i></span>
+                            <span class="text-sm font-medium">${data.phone}</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-full bg-[#4A3429] text-white flex items-center justify-center text-lg"><i class="fa-brands fa-instagram"></i></span>
+                            <span class="text-sm font-medium">${data.instagram}</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-full bg-[#4A3429] text-white flex items-center justify-center text-lg"><i class="fa-solid fa-location-dot"></i></span>
+                            <span class="text-sm font-medium">${data.locationName}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Otomatis trigger tab 'about' pas pertama kali dibuka
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('about');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChillZone - Recommended Cozy Cafes in Purwokerto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #ded5cc; /* Warna latar belakang krem sesuai gambar */
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR STYLING --- */
+        header {
+            background-color: #4a342e; /* Warna cokelat tua khas ChillZone */
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #f3cd8b; /* Warna sorotan kuning/emas untuk menu aktif */
+        }
+
+        .profile-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Siluet simpel untuk icon profil */
+        .profile-icon::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #4a342e;
+            border-radius: 50%;
+            top: 4px;
+            left: 10px;
+        }
+        .profile-icon::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 12px;
+            background: #4a342e;
+            border-radius: 15px 15px 0 0;
+            bottom: 2px;
+            left: 5px;
+        }
+
+        /* --- MAIN CONTENT CONTAINER --- */
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* --- TITLE STYLING --- */
+        .title-container {
+            border: 1px solid #a3968e;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .title-container h1 {
+            font-size: 24px;
+            color: #2b1f1d;
+            font-weight: 700;
+        }
+
+        /* --- IMAGE GALLERY (Disesuaikan untuk 1 Gambar Utuh) --- */
+        .image-gallery {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 4px;
+            border-radius: 16px; /* Sudut melengkung rapi */
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 35px;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: auto; /* Agar tinggi menyesuaikan proporsi gambar hasil edit kamu */
+            max-height: 450px; /* Batas tinggi maksimal supaya tidak terlalu memanjang */
+            object-fit: cover; 
+            display: block;
+            border-radius: 12px; /* Melengkung di bagian dalam */
+        }
+
+        /* --- ARTICLE TEXT STYLING --- */
+        .article-content {
+            background-color: transparent;
+            padding: 10px 5px;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+            font-size: 15px;
+            color: #444444;
+            text-align: justify;
+            font-weight: 300;
+        }
+
+        /* Responsive untuk Handphone / Tablet */
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+            nav ul {
+                gap: 12px;
+            }
+            nav ul li a {
+                font-size: 13px;
+            }
+            .title-container h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ChillZone</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Spots</a></li>
+                <li><a href="#">Review</a></li>
+                <li><a href="#" class="active">Article</a></li>
+                <li><div class="profile-icon"></div></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <div class="title-container">
+            <h1>Recommended Cozy Cafes in Purwokerto For Hanging Out</h1>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #b8aba0; margin-bottom: 35px;">
+
+        <div class="image-gallery">
+            <img src="img/artikel 1.png" alt="Cozy Cafes in Purwokerto">
+        </div>
+
+        <div class="article-content">
+            <p>Hi, Chillvers!<br>
+            Purwokerto has many cozy café options that are perfect for relaxing, whether with friends or alone. Cafés such as Arasta Alpha, Bayan Village & Café, Ebony, and Lav Cafe are popular choices because they offer a comfortable and aesthetic atmosphere. Each place has a different concept, ranging from modern minimalist styles to warmer and more relaxed vibes.</p>
+
+            <p>Arasta Alpha is known for its spacious and comfortable area, making it suitable for gatherings or simply enjoying a chill time. Bayan Village & Café offers a more unique concept with a calm and natural atmosphere, perfect for those who enjoy a peaceful vibe. Meanwhile, Ebony features a modern design with various interesting photo spots, making it not only comfortable for hanging out but also great for photography. Lav Cafe also provides a similarly cozy atmosphere with various seating options.</p>
+
+            <p>Besides the atmosphere, these cafés also offer a wide range of menus, from coffee and non-coffee drinks to light snacks and heavy meals at relatively affordable prices. This makes cafés suitable for various activities such as discussions, doing assignments, or simply unwinding.</p>
+
+            <p>With fairly complete facilities such as WiFi, comfortable seating areas, and a supportive ambiance, these cafés can be a great choice for anyone looking to enjoy a relaxing time in Purwokerto.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

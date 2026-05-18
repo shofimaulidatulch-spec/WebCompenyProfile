@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChillZone - Fun places in Purwokerto for walking around and hanging out</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ================= BASE STYLES ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #dcd1cb; /* Warna krem/nude pastel sesuai gambar */
+      color: #333333;
+    }
+
+    /* ================= NAVBAR (COKELAT GELAP) ================= */
+    .navbar {
+      background-color: #4e3629; /* Warna cokelat tua khas ChillZone */
+      width: 100%;
+      position: relative;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .logo {
+      color: #ffffff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-left: auto;
+      margin-right: 25px;
+    }
+
+    .menu a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .menu a:hover {
+      opacity: 1;
+    }
+
+    /* Status Aktif untuk Menu Article (Warna Kuning/Emas Pastel sesuai Gambar) */
+    .menu a.active {
+      color: #dfb16c; 
+      font-weight: 500;
+      opacity: 1;
+    }
+
+    /* Ikon Profil Bulat Putih */
+    .profile-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-icon {
+      width: 34px;
+      height: 34px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4e3629;
+    }
+
+    /* Garis Aksen Biru di Bawah Navbar */
+    .nav-blue-line {
+      width: 100%;
+      height: 4px;
+      background-color: #44301a97; /* Aksen biru sesuai potongan gambar */
+    }
+
+    /* ================= MAIN CONTENT LAYOUT ================= */
+    .article-container {
+      max-width: 800px; /* Layout terpusat di tengah */
+      margin: 50px auto;
+      padding: 0 30px;
+    }
+
+    /* KOTAK JUDUL (BORDER TIPIS) */
+    .article-header-box {
+      border: 1px solid rgba(78, 54, 41, 0.4);
+      padding: 18px 20px;
+      text-align: center;
+      background-color: transparent;
+      margin-bottom: 25px;
+    }
+
+    .article-header-box h2 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #382b27;
+      line-height: 1.3;
+    }
+
+    /* GARIS TIPIS DI BAWAH KOTAK JUDUL */
+    .header-divider {
+      border: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      margin-bottom: 35px;
+      width: 100%;
+    }
+
+    /* ================= IMAGE GALLERY (Disesuaikan untuk 1 File Kolase Jadi) ================= */
+    .image-gallery-grid-v2 {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 4px;
+      border-radius: 20px; /* Membuat sudut luar melengkung rapi */
+      overflow: hidden; /* Memotong gambar agar ikut melengkung */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+    }
+
+    .image-gallery-grid-v2 img {
+      width: 100%;
+      height: auto; /* Ketinggian otomatis mengikuti proporsi edit gambar kamu */
+      max-height: 480px; /* Batasan tinggi maksimal agar tetap proporsional */
+      object-fit: cover;
+      display: block;
+      border-radius: 16px; /* Melengkung di area dalam */
+    }
+
+    /* ================= TEXT CONTENT TYPOGRAPHY ================= */
+    .article-content {
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: #2b2b2b;
+      text-align: justify; /* Rata kanan-kiri sesuai gambar */
+    }
+
+    .article-content p {
+      margin-top: 0;
+      margin-bottom: 22px; /* Jarak antar paragraf */
+      font-weight: 400;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 0.85rem;
+      color: #555555;
+    }
+
+    footer p {
+      margin-bottom: 6px;
+    }
+
+    /* ================= RESPONSIVE DESIGN (HP) ================= */
+    @media (max-width: 650px) {
+      .nav-inner {
+        padding: 12px 15px;
+      }
+      .logo {
+        font-size: 1.3rem;
+      }
+      .menu {
+        gap: 12px;
+        margin-right: 12px;
+      }
+      .menu a {
+        font-size: 0.85rem;
+      }
+      .article-container {
+        margin: 25px auto;
+        padding: 0 15px;
+      }
+      .article-header-box {
+        padding: 12px;
+      }
+      .article-header-box h2 {
+        font-size: 1.25rem;
+      }
+      .image-gallery-grid-v2 {
+        border-radius: 12px;
+      }
+      .article-content {
+        text-align: left; /* Rata kiri di handphone agar lebih nyaman dibaca */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="logo">ChillZone</div>
+
+      <nav class="menu">
+        <a href="#">Home</a>
+        <a href="#">Spots</a>
+        <a href="#">Review</a>
+        <a href="#" class="active">Article</a> 
+      </nav>
+
+      <div class="profile-container">
+        <div class="profile-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="nav-blue-line"></div>
+  </header>
+
+  <main class="article-container">
+    
+    <div class="article-header-box">
+      <h2>Fun places in Purwokerto for walking around and hanging out</h2>
+    </div>
+
+    <hr class="header-divider">
+
+    <div class="image-gallery-grid-v2">
+      <img src="img/artikel 2.png" alt="Fun places in Purwokerto">
+    </div>
+
+    <article class="article-content">
+      <p>Hi, Chillvers!</p>
+      
+      <p>Purwokerto has many exciting places you can visit for a relaxing walk or a hangout with friends. Places like Happy Time, Small World, and Menara Pandang Teratai each offer different experiences with their own unique attractions. From lively entertainment spots to places with beautiful views, there are plenty of options to spend your free time.</p>
+
+      <p>Happy Time is a great place if you're looking for a fun and lively atmosphere that never feels boring. With various activities and a more energetic vibe, it's perfect for hanging out with friends and enjoying quality time together. Meanwhile, Small World offers a unique concept featuring miniature landmarks from different countries, allowing you to "travel the world" while taking photos at many interesting spots.</p>
+
+      <p>On the other hand, Menara Pandang Teratai is the perfect choice if you want to enjoy a city view from above. It offers a great scenery, especially in the late afternoon or at night, making it ideal for relaxing while enjoying the atmosphere. Many visitors also come here just to take photos or unwind.</p>
+
+      <p>With so many options available, you can easily choose places based on your mood and activities. Whether you want something fun, unique, or just a chill place with a nice view, Purwokerto has it all. So, no need to be confused when looking for places to walk around and hang out!</p>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>© 2026 ChillZone. All rights reserved.</p>
+    <p>Create your vibe · Zone your moment · Own your experience</p>
+  </footer>
+
+</body>
+</html>

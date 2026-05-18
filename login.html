@@ -10,6 +10,121 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="login.css">
+
+  <!-- TAMBAHAN CSS UNTUK MODAL FORGOT PASSWORD -->
+  <style>
+    /* Style dasar untuk latar belakang modal (overlay) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Efek gelap transparan */
+      backdrop-filter: blur(4px); /* Efek blur estetik */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Ketika modal aktif */
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Kotak konten modal */
+    .modal-box {
+      background: #1e1e1e; /* Sesuaikan dengan tema gelap ChillZone */
+      color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      position: relative;
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-box h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .modal-box p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .modal-box label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .modal-box input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      color: #fff;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    .modal-box input[type="email"]:focus {
+      outline: none;
+      border-color: #bdcc16; /* Warna aksen maroon/merah */
+    }
+
+    /* Tombol di dalam modal */
+    .modal-btn {
+      width: 100%;
+      padding: 12px;
+      background: #dbdb41e1; 
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .modal-btn:hover {
+      background: #f0fd007e;
+    }
+
+    /* Tombol Close (X) */
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .close-modal:hover {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
 
@@ -38,7 +153,7 @@
       <h2>Welcome Back</h2>
       <p>Welcome back! Please enter your details.</p>
 
-      <form>
+      <form id="login-form">
 
         <!-- EMAIL -->
         <label>Email</label>
@@ -57,14 +172,15 @@
           <span>Sign In with Google</span>
         </div>
 
-        <!-- EXTRA (FIXED) -->
+        <!-- EXTRA -->
         <div class="extra">
           <label class="remember">
             <input type="checkbox">
             <span>Remember me</span>
           </label>
 
-          <a href="#" class="forgot">Forgot Password?</a>
+          <!-- Memasang ID pada link forgot password -->
+          <a href="#" class="forgot" id="forgot-trigger">Forgot Password?</a>
         </div>
 
         <!-- SIGN UP -->
@@ -83,11 +199,67 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ================= MODAL FORGOT PASSWORD ================= -->
+<div class="modal-overlay" id="forgot-modal">
+  <div class="modal-box">
+    <button class="close-modal" id="close-trigger">&times;</button>
+    <h3>Reset Password</h3>
+    <p>Masukkan alamat email akun ChillZone kamu. Kami akan mengirimkan instruksi untuk membuat password baru.</p>
+    
+    <form id="forgot-form">
+      <label for="forgot-email">Email Address</label>
+      <input type="email" id="forgot-email" placeholder="name@example.com" required>
+      
+      <button type="submit" class="modal-btn">Send Reset Link</button>
+    </form>
+  </div>
+</div>
+
 <footer>
   <p>© 2026 ChillZone. All rights reserved.</p>
   <p>Create your vibe · Zone your moment · Own your experience</p>
 </footer>
+
+<!-- JAVASCRIPT LOGIC -->
+<script>
+  const forgotTrigger = document.getElementById('forgot-trigger');
+  const closeTrigger = document.getElementById('close-trigger');
+  const forgotModal = document.getElementById('forgot-modal');
+  const forgotForm = document.getElementById('forgot-form');
+
+  // 1. Buka Modal ketika "Forgot Password?" diklik
+  forgotTrigger.addEventListener('click', (e) => {
+    e.preventDefault(); // Mencegah link me-refresh halaman
+    forgotModal.classList.add('active');
+  });
+
+  // 2. Tutup Modal ketika tombol silang (X) diklik
+  closeTrigger.addEventListener('click', () => {
+    forgotModal.classList.remove('active');
+  });
+
+  // 3. Tutup Modal jika user mengklik area gelap di luar kotak modal
+  forgotModal.addEventListener('click', (e) => {
+    if (e.target === forgotModal) {
+      forgotModal.classList.remove('active');
+    }
+  });
+
+  // 4. Logika saat Form Reset Email dikirim (Submit)
+  forgotForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Menahan refresh submit bawaan browser
+    
+    const emailInput = document.getElementById('forgot-email').value;
+
+    // Bagian ini adalah simulasi. Jika sudah masuk ke Backend (PHP/NodeJS/Firebase), 
+    // kamu bisa ganti bagian ini dengan fungsi API Fetching.
+    alert(`Link reset password berhasil dikirim ke: ${emailInput}\nSilakan periksa folder kotak masuk atau spam email Anda.`);
+    
+    // Reset form dan tutup pop-up setelah selesai
+    forgotForm.reset();
+    forgotModal.classList.remove('active');
+  });
+</script>
 
 </body>
 </html>

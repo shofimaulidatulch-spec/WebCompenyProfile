@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChillZONE - Arasta Alpha</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">ChillZONE</div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Spots</a>
+            <a href="#">Review</a>
+            <a href="#">Article</a>
+            <a href="#" class="profile-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="main-grid">
+            
+            <section class="detail-panel">
+                <div class="tabs">
+                    <button class="tab-btn active" data-target="about" data-image="img/about.png">About</button>
+<button class="tab-btn" data-target="menu" data-image="img/MENU ARASTA ALPHA.png">Menu</button>
+<button class="tab-btn" data-target="vibes" data-image="img/The Vibes.png">The Vibes</button>
+<button class="tab-btn" data-target="contact" data-image="img/Contact.png">Contact</button>
+                </div>
+
+                <div class="info-content">
+                    <div id="about" class="tab-content active">
+                        <h2>Arasta Alpha, Overste Isdiman</h2>
+                        <p class="description">
+                            Arasta Alpha, Overste Isdiman, a figure from Purwokerto known as a coffee enthusiast in Indonesia, carries the spirit of promoting the potential of local coffee beans and the distinctive coffee culture in Central Java, highlighting how Purwokerto contributes to the broader narrative of Indonesian coffee development—from communities and coffee lovers to the preservation of its authentic flavors.
+                        </p>
+                        <hr class="divider">
+                        <h3>Opening Hours</h3>
+                        <p class="hours">Everyday - 24 Hours</p>
+                        <hr class="divider">
+                        <h3>Price Range</h3>
+                        <p class="price">Rp.6.000 - Rp.139.000</p>
+                    </div>
+
+                    <div id="menu" class="tab-content">
+                        <h2>Our Menu</h2>
+                        <p class="description">Nikmati berbagai pilihan kopi nusantara berkualitas tinggi, minuman non-kopi segar, serta hidangan penutup yang lezat menemani hari Anda.</p>
+                        <hr class="divider">
+                        <h3>Signature Coffee</h3>
+                        <p class="hours">Es Kopi Susu Arasta — Rp 18.000<br>Manual Brew (Local Beans) — Rp 22.000</p>
+                        <hr class="divider">
+                        <h3>Snacks & Dessert</h3>
+                        <p class="price">Croissant Original — Rp 15.000<br>Platter Fries & Sausages — Rp 25.000</p>
+                    </div>
+
+                    <div id="vibes" class="tab-content">
+                        <h2>The Vibes</h2>
+                        <p class="description">Didesain khusus untuk memberikan kenyamanan maksimal bagi produktivitas maupun ruang bersantai Anda.</p>
+                        <hr class="divider">
+                        <h3>Fasilitas Tempat</h3>
+                        <p class="hours">✔ Area Indoor Full AC & Estetik (Co-working friendly)<br>✔ Area Outdoor Semi-Terbuka yang Luas<br>✔ Koneksi Wi-Fi Super Cepat & Colokan di setiap meja.</p>
+                    </div>
+
+                    <div id="contact" class="tab-content">
+                        <h2>Contact & Location</h2>
+                        <h3>Location Address</h3>
+                        <p class="address">
+                            <a href="https://maps.google.com" target="_blank">Ruko Widodo, Jl. Overste Isdiman, Jatiwinangun, Purwokerto Lor, Kec. Purwokerto Tim., Kabupaten Banyumas, Jawa Tengah 53114</a>
+                        </p>
+                        <hr class="divider">
+                        <h3>Social Media & Hubungi</h3>
+                        <p class="hours">Instagram: @arasta.alpha<br>WhatsApp: +62 812-3456-7890</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="image-panel">
+                <img id="panel-img" src="img/about.png" alt="Arasta Alpha Building">
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 ChillZONE. All rights reserved.</p>
+        <p class="tagline">Create your vibe • Zone your moment • Own your experience</p>
+    </footer>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+        const panelImg = document.getElementById('panel-img');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 1. Reset tombol active
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // 2. Reset konten teks active
+                contents.forEach(content => content.classList.remove('active'));
+
+                // 3. Tampilkan konten teks yang sesuai
+                const targetId = tab.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+
+                // 4. Ubah gambar sesuai tombol yang diklik
+                const newImageUrl = tab.getAttribute('data-image');
+                if (newImageUrl) {
+                    panelImg.setAttribute('src', newImageUrl);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
